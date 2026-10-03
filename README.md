@@ -32,23 +32,23 @@ Los datos principales se almacenan en memoria dentro del segmento `.data`. Adem�
 ### Operaciones requeridas
 
 | Datos / Resultados | Propósito | Operación requerida | Instrucción MIPS |
-| `salas` | Cargar el número de salas desde memoria | Carga | `lw` |
-| `asientos` | Cargar los asientos por sala desde memoria | Carga | `lw` |
-| `vendidos` | Cargar la cantidad de boletos vendidos | Carga | `lw` |
-| `capacidad_total` | Calcular 4 × 50 = 200 | Multiplicación | `mul` |
-| `disponibles` | Calcular 200 - 175 = 25 | Resta | `sub` |
-| `es_diferente` | Comprobar si vendidos ≠ capacidad total | Comparación de desigualdad | `sne` |
-| Resultados calculados | Guardar los valores obtenidos en memoria | Almacenamiento | `sw` |
-| Flujo del programa | Comparar vendidos con capacidad total y decidir qué salida ejecutar | Salto condicional | `beq` |
-| Mensajes y resultado | Mostrar texto y valores en pantalla | Entrada/salida | `syscall` |
+| salas | Cargar el número de salas desde memoria | Carga | lw |
+| asientos| Cargar los asientos por sala desde memoria | Carga | lw |
+| vendidos | Cargar la cantidad de boletos vendidos | Carga | lw |
+| capacidad_total | Calcular 4 × 50 = 200 | Multiplicación | mul |
+|disponibles | Calcular 200 - 175 = 25 | Resta | sub |
+| es_diferente | Comprobar si vendidos ≠ capacidad total |Comparación de desigualda| sne |
+| Resultados calculados | Guardar los valores obtenidos en memoria|Almacenamiento |sw|
+| Flujo del programa |Comparar vendidos con capacidad total y decidir qué salida ejecutar |Salto condicional|beq|
+| Mensajes y resultado|Mostrar texto y valores en pantalla|Entrada/salida|syscall|
 Las instrucciones principales utilizadas por el programa son:
-- `lw`: cargar un dato desde memoria.
-- `sw`: almacenar un resultado en memoria.
-- `mul`: realizar la multiplicación para obtener la capacidad total.
-- `sub`: calcular los asientos disponibles.
-- `sne`: determinar si la cantidad vendida es diferente de la capacidad total.
-- `beq`: dirigir el flujo hacia el caso de cine lleno cuando los valores son iguales.
-- `li`, `la` y `move`: preparar valores y direcciones para las llamadas al sistema.
+- lw: cargar un dato desde memoria.
+- sw: almacenar un resultado en memoria.
+- mul: realizar la multiplicación para obtener la capacidad total.
+- sub: calcular los asientos disponibles.
+- sne: determinar si la cantidad vendida es diferente de la capacidad total.
+- beq: dirigir el flujo hacia el caso de cine lleno cuando los valores son iguales.
+- li, la y move: preparar valores y direcciones para las llamadas al sistema.
 - `j`: saltar al final del programa después de mostrar el resultado correspondiente.
 - `syscall`: imprimir mensajes, mostrar el número de asientos disponibles y finalizar la ejecución.
 ## Implementación
@@ -60,13 +60,13 @@ La carpeta `version_base/` contiene el código base de referencia de la activida
 **Archivo:**
 version_final/programa_final.s
 La versión final realiza las siguientes etapas:
-1. Carga desde memoria los valores de `salas`, `asientos` y `vendidos`.
-2. Calcula la capacidad total del cine mediante `mul`.
-3. Calcula los asientos disponibles mediante `sub`.
-4. Compara la cantidad vendida con la capacidad máxima mediante `sne` y `beq`.
-5. Guarda `capacidad_total`, `disponibles` y `es_diferente` en memoria mediante `sw`.
-6. Si el cine está lleno, muestra el mensaje `Cine lleno`.
-7. En caso contrario, muestra `Asientos disponibles: ` seguido del número de asientos libres.
+1. Carga desde memoria los valores de salas, asientos y vendidos.
+2. Calcula la capacidad total del cine mediante mul.
+3. Calcula los asientos disponibles mediante sub.
+4. Compara la cantidad vendida con la capacidad máxima mediante sne y beq.
+5. Guarda capacidad_total, disponibles y es_diferente en memoria mediante sw.
+6. Si el cine está lleno, muestra el mensaje Cine lleno.
+7. En caso contrario, muestra Asientos disponibles: seguido del número de asientos libres.
 8. Finaliza la ejecución mediante la llamada al sistema correspondiente.
 El código contiene comentarios que permiten identificar los bloques principales y seguir el flujo del programa.
 ## Evidencias de ejecución
@@ -85,7 +85,7 @@ Durante la ejecución, los registros temporales principales contienen los valore
 | `$t2` | 175 | Boletos vendidos. |
 | `$t3` | 200 | Capacidad total calculada. |
 | `$t4` | 25 | Asientos disponibles. |
-| `$t5` | 1 | Resultado de la comparación `vendidos != capacidad_total`. |
+| `$t5` | 1 | Resultado de la comparación vendidos!= capacidad_total |
 Estos valores permiten comprobar que las operaciones aritméticas y de comparación se realizaron correctamente.
 ### Resultado
 ![Resultado del programa](evidencias/resultado.png)
