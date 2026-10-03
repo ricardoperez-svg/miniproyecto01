@@ -20,14 +20,14 @@ Asientos disponibles: 25
 Los datos principales se almacenan en memoria dentro del segmento `.data`. Además de las entradas iniciales, el programa reserva espacio para almacenar los resultados calculados y los mensajes que se muestran por pantalla.
 
 | Dato | Valor inicial | Propósito |
-| `salas` | 4 | Almacena el número total de salas del cine. |
-| `asientos` | 50 | Almacena la cantidad de asientos por sala. |
-| `vendidos` | 175 | Almacena la cantidad de boletos vendidos. |
-| `capacidad_total` | 0 | Guarda la capacidad máxima calculada del cine: 4 × 50 = 200. |
-| `disponibles` | 0 | Guarda la cantidad de asientos libres: 200 - 175 = 25. |
-| `es_diferente` | 0 | Guarda 1 si la cantidad vendida es diferente de la capacidad total y 0 en caso contrario. |
-| `msg_lleno` | `"Cine lleno\n"` | Mensaje mostrado cuando el cine alcanza su capacidad máxima. |
-| `msg_disp` | `"Asientos disponibles: "` | Mensaje mostrado cuando todavía existen asientos libres. |
+| salas | 4 | Almacena el número total de salas del cine. |
+| asientos | 50 | Almacena la cantidad de asientos por sala. |
+| vendidos | 175 | Almacena la cantidad de boletos vendidos. |
+| capacidad_total | 0 | Guarda la capacidad máxima calculada del cine: 4 × 50 = 200. |
+| disponibles | 0 | Guarda la cantidad de asientos libres: 200 - 175 = 25. |
+| es_diferente | 0 | Guarda 1 si la cantidad vendida es diferente de la capacidad total y 0 en caso contrario. |
+| msg_lleno | "Cine lleno\n" | Mensaje mostrado cuando el cine alcanza su capacidad máxima. |
+| msg_disp | "Asientos disponibles: " | Mensaje mostrado cuando todavía existen asientos libres. |
 
 ### Operaciones requeridas
 
@@ -49,8 +49,8 @@ Las instrucciones principales utilizadas por el programa son:
 - sne: determinar si la cantidad vendida es diferente de la capacidad total.
 - beq: dirigir el flujo hacia el caso de cine lleno cuando los valores son iguales.
 - li, la y move: preparar valores y direcciones para las llamadas al sistema.
-- `j`: saltar al final del programa después de mostrar el resultado correspondiente.
-- `syscall`: imprimir mensajes, mostrar el número de asientos disponibles y finalizar la ejecución.
+- j: saltar al final del programa después de mostrar el resultado correspondiente.
+- syscall: imprimir mensajes, mostrar el número de asientos disponibles y finalizar la ejecución.
 ## Implementación
 El programa se encuentra organizado en una versión base y una versión final, de acuerdo con la estructura solicitada para el repositorio.
 ### Versión base
