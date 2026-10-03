@@ -80,12 +80,12 @@ La captura muestra el código ensamblador ejecutado en MipsyWeb. Se observan el 
 **Descripción:**  
 Durante la ejecución, los registros temporales principales contienen los valores usados y calculados por el programa:
 | Registro | Valor | Contenido |
-| `$t0` | 4 | Número de salas. |
-| `$t1` | 50 | Asientos por sala. |
-| `$t2` | 175 | Boletos vendidos. |
-| `$t3` | 200 | Capacidad total calculada. |
-| `$t4` | 25 | Asientos disponibles. |
-| `$t5` | 1 | Resultado de la comparación vendidos!= capacidad_total |
+| $t0 | 4 | Número de salas. |
+| $t1 | 50 | Asientos por sala. |
+| $t2 | 175 | Boletos vendidos. |
+| $t3 | 200 | Capacidad total calculada. |
+| $t4 | 25 | Asientos disponibles. |
+| $t5 | 1 | Resultado de la comparación vendidos!= capacidad_total |
 Estos valores permiten comprobar que las operaciones aritméticas y de comparación se realizaron correctamente.
 ### Resultado
 ![Resultado del programa](evidencias/resultado.png)
