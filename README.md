@@ -15,23 +15,23 @@ El proyecto plantea el control de disponibilidad de boletos para un cine mediant
 
 El cine cuenta con **4 salas**, cada una con una capacidad de **50 asientos**, por lo que la capacidad total es de **200 asientos**. En el escenario asignado se han vendido **175 boletos**.
 
-El programa debe utilizar los datos almacenados en memoria para calcular la capacidad total del cine, determinar cuántos asientos permanecen disponibles y mostrar el resultado correspondiente.
+El programa utiliza los datos almacenados en memoria para calcular la capacidad total del cine, determinar cuántos asientos permanecen disponibles y mostrar el resultado correspondiente.
 
 ### Resultado
 
-El programa debe calcular:
+El programa calcula:
 
 - Capacidad total del cine: **200 asientos**.
 - Boletos vendidos: **175**.
 - Asientos disponibles: **25**.
 
-Si la cantidad de boletos vendidos es igual a la capacidad total, el programa debe mostrar:
+Si la cantidad de boletos vendidos es igual a la capacidad total, el programa muestra:
 
 ```text
 Cine lleno
 ```
 
-En caso contrario, debe mostrar:
+En caso contrario, muestra:
 
 ```text
 Asientos disponibles: 25
@@ -87,11 +87,11 @@ Instrucciones utilizadas en el programa:
 
 ## Implementación
 
-El código se organiza en una versión base y una versión final. La versión final contiene la solución completa del escenario y debe ejecutarse correctamente en MipsyWeb.
+El código se organiza en una versión base y una versión final. La versión final contiene la solución completa del escenario y se ejecuta en MipsyWeb.
 
 ### Versión base
 
-La carpeta `version_base/` debe contener el programa utilizado como punto de partida de la actividad.
+La carpeta `version_base/` contiene el programa utilizado como punto de partida de la actividad.
 
 **Archivo:**
 
@@ -99,10 +99,8 @@ La carpeta `version_base/` debe contener el programa utilizado como punto de par
 version_base/programa_base.s
 ```
 
-> **PENDIENTE – ARCHIVO:** subir aquí el programa base proporcionado o utilizado al inicio del proyecto con el nombre `programa_base.s`.
-
 **Descripción del estado inicial:**  
-> **PENDIENTE:** completar esta breve descripción cuando se confirme qué contenía exactamente la versión base entregada por el docente.
+La versión base contiene la estructura inicial del programa MIPS y los datos necesarios para representar el escenario del cine. A partir de esta versión se desarrolló y completó la lógica requerida para calcular la capacidad, determinar los asientos disponibles y controlar la salida del programa.
 
 ### Versión final
 
@@ -126,50 +124,32 @@ La versión final incluye:
 - Mensajes diferentes para los casos de cine lleno y asientos disponibles.
 - Comentarios explicativos dentro del código.
 
-> **ARCHIVO A SUBIR:** `version_final/programa_final.s`
-
 ---
 
 ## Evidencias de ejecución
 
-Las siguientes capturas deben demostrar el código, el uso de registros y el resultado final en MipsyWeb.
+Las siguientes capturas demuestran el código, el uso de registros y el resultado final en MipsyWeb.
 
 ### Código
-
-> **PENDIENTE – IMAGEN:** subir una captura del código con el nombre:
->
-> ```text
-> evidencias/codigo.png
-> ```
 
 ![Código MIPS](evidencias/codigo.png)
 
 **Descripción:**  
-### Registros
+La captura muestra el código fuente ejecutado en MipsyWeb. Se observan las instrucciones utilizadas para cargar los datos, calcular la capacidad total y los asientos disponibles, almacenar resultados en memoria y controlar la salida mediante saltos y llamadas al sistema.
 
-> **PENDIENTE – IMAGEN:** subir una captura de los registros con el nombre:
->
-> ```text
-> evidencias/registros.png
-> ```
+### Registros
 
 ![Registros](evidencias/registros.png)
 
 **Descripción:**  
-La captura debe mostrar los registros relevantes durante o después de la ejecución. Se debe poder identificar el cálculo de la capacidad total (**200**) y de los asientos disponibles (**25**), según los registros utilizados por el programa.
+La captura muestra los registros utilizados durante la ejecución. Se observan, entre otros, `$t0 = 4`, `$t1 = 50`, `$t2 = 175`, `$t3 = 200`, `$t4 = 25` y `$t5 = 1`, correspondientes a los datos de entrada, la capacidad total, los asientos disponibles y el resultado de la comparación.
 
 ### Resultado
-
-> **PENDIENTE – IMAGEN:** subir una captura de la salida del programa con el nombre:
->
-> ```text
-> evidencias/resultado.png
-> ```
 
 ![Resultado del programa](evidencias/resultado.png)
 
 **Descripción:**  
-Para el escenario asignado, la ejecución debe mostrar que quedan **25 asientos disponibles**. Si se modifica la cantidad de boletos vendidos hasta igualar la capacidad total, el programa debe mostrar el mensaje **"Cine lleno"**.
+La salida muestra **“Asientos disponibles: 25”**, confirmando que el programa calculó correctamente la diferencia entre la capacidad total de 200 asientos y los 175 boletos vendidos. MipsyWeb también indica que el programa finalizó correctamente con estado de salida 0.
 
 ---
 
@@ -187,24 +167,48 @@ Si se desarrollara nuevamente la actividad, sería conveniente planificar desde 
 
 ## Documentación
 
-El reporte completo del proyecto debe almacenarse en:
+El reporte completo del proyecto se encuentra almacenado en:
 
 ```text
 documentacion/reporte_proyecto.pdf
 ```
 
-> **PENDIENTE – ARCHIVO:** subir el reporte final en PDF con el nombre `reporte_proyecto.pdf` dentro de la carpeta `documentacion/`.
+---
+
+## Estructura del repositorio
+
+```text
+miniproyecto01/
+│
+├── README.md
+│
+├── version_base/
+│   └── programa_base.s
+│
+├── version_final/
+│   └── programa_final.s
+│
+├── evidencias
+│   ├── codigo.png
+│   ├── registros.png
+│   └── resultado.png
+│
+└── documentacion/
+    └── reporte_proyecto.pdf
+```
+
+---
 
 ## Bibliografía
 
-Las fuentes utilizadas para comprender las instrucciones MIPS, el funcionamiento del simulador y otros conceptos empleados en el proyecto deben registrarse utilizando **normas APA, séptima edición**.
+Las fuentes utilizadas para comprender las instrucciones MIPS, el funcionamiento del simulador y otros conceptos empleados en el proyecto se registran utilizando **normas APA, séptima edición**.
 
 ### Ejemplos
 
 #### Página web
 
 ```text
-University of New South Wales. (n.d.). MIPS instruction set.
+University of New South Wales. (s.f.). MIPS instruction set.
 https://cgi.cse.unsw.edu.au/~cs1521/current/resources/mips-guide.html
 ```
 
@@ -228,4 +232,4 @@ http://courses.missouristate.edu/kenvollmar/mars/
 
 2. Patterson, D. A., & Hennessy, J. L. (2021). *Computer organization and design: The hardware/software interface* (6th ed.). Morgan Kaufmann.
 
-3. MARS. (n.d.). *MIPS Assembler and Runtime Simulator*. http://courses.missouristate.edu/kenvollmar/mars/
+3. MARS. (s.f.). *MIPS Assembler and Runtime Simulator*. http://courses.missouristate.edu/kenvollmar/mars/
