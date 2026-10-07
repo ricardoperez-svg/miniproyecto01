@@ -3,7 +3,7 @@
 **Asignatura:** UCOM250 – Organización y Arquitectura de Computadores  
 **Integrantes:** Ricardo Perez, Eduardo Nogales  
 **Año:** 2026  
-**Fecha:** 03/10/2026
+**Fecha:** 07/10/2026
 
 ---
 
@@ -100,7 +100,7 @@ version_base/programa_base.s
 ```
 
 **Descripción del estado inicial:**  
-La versión base contiene la estructura inicial del programa MIPS y los datos necesarios para representar el escenario del cine. A partir de esta versión se desarrolló y completó la lógica requerida para calcular la capacidad, determinar los asientos disponibles y controlar la salida del programa.
+La versión base carga desde memoria la cantidad de salas, los asientos por sala y los boletos vendidos. A partir de estos datos calcula la capacidad total del cine y los asientos disponibles, compara si la cantidad de boletos vendidos es diferente de la capacidad total y almacena los resultados nuevamente en memoria. Esta versión todavía no incluye el control de flujo ni la presentación de mensajes por pantalla, elementos que se incorporan en la versión final.
 
 ### Versión final
 
@@ -201,35 +201,18 @@ miniproyecto01/
 
 ## Bibliografía
 
-Las fuentes utilizadas para comprender las instrucciones MIPS, el funcionamiento del simulador y otros conceptos empleados en el proyecto se registran utilizando **normas APA, séptima edición**.
+### Webgrafía
 
-### Ejemplos
+1. Citas APA – Normas APA. (s.f.). Recuperado el 24 de septiembre de 2026, de https://normas-apa.org/citas/
 
-#### Página web
+2. CiteMaker. (s.f.). *CiteMaker CiteWeb | APA 7th Edn.* [Extensión de Chrome]. Chrome Web Store. Recuperado el 24 de septiembre de 2026, de https://chromewebstore.google.com/detail/citemaker-citeweb-apa-7th/naankklphfojljboaokgfbheobbgenka
 
-```text
-University of New South Wales. (s.f.). MIPS instruction set.
-https://cgi.cse.unsw.edu.au/~cs1521/current/resources/mips-guide.html
-```
-
-#### Libro
-
-```text
-Patterson, D. A., & Hennessy, J. L. (2021). Computer organization
-and design: The hardware/software interface (6th ed.). Morgan Kaufmann.
-```
-
-#### Documentación de software
-
-```text
-MARS. (s.f.). MIPS Assembler and Runtime Simulator.
-http://courses.missouristate.edu/kenvollmar/mars/
-```
+3. *Mipsy Web: MIPS Assembly Emulator and Debugger*. (s.f.). Recuperado el 29 de septiembre de 2026, de https://mipsy.qml.io/
 
 ### Referencias utilizadas
 
-1. University of New South Wales. (s.f.). *MIPS instruction set*. https://cgi.cse.unsw.edu.au/~cs1521/current/resources/mips-guide.html
+1. Patterson, D. A., & Hennessy, J. L. (2018). *Estructura y diseño de computadores: La interfaz hardware/software* (5.ª ed.). Editorial Reverté.
 
-2. Patterson, D. A., & Hennessy, J. L. (2021). *Computer organization and design: The hardware/software interface* (6th ed.). Morgan Kaufmann.
+2. Sweetman, D. (2007). *See MIPS run* (2.ª ed.). Morgan Kaufmann Publishers.
 
-3. MARS. (s.f.). *MIPS Assembler and Runtime Simulator*. http://courses.missouristate.edu/kenvollmar/mars/
+3. Tanenbaum, A. S., & Bos, H. (2015). *Sistemas operativos modernos* (4.ª ed.). Pearson Education.
