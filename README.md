@@ -1,111 +1,231 @@
-# miniproyecto01
 # Sistema de inventario y control de venta de boletos para un cine en MipsyWeb
-**Asignatura:** UCOM250 - Organización y Arquitectura de Computadores  
+
+**Asignatura:** UCOM250 – Organización y Arquitectura de Computadores  
 **Integrantes:** Ricardo Perez, Eduardo Nogales  
 **Año:** 2026  
 **Fecha:** 03/10/2026
+
+---
+
 ## Descripción
 
 ### Escenario
-El escenario asignado consiste en desarrollar un programa en lenguaje ensamblador MIPS para llevar el control de inventario y venta de boletos de un cine.
-El programa debe determinar la capacidad total del cine a partir del número de salas y la cantidad de asientos disponibles por sala. Luego debe calcular cuántos asientos permanecen disponibles después de registrar las ventas realizadas y comprobar si la cantidad de boletos vendidos alcanzó la capacidad máxima del cine.
+
+El proyecto plantea el control de disponibilidad de boletos para un cine mediante un programa desarrollado en lenguaje ensamblador MIPS y ejecutado en MipsyWeb.
+
+El cine cuenta con **4 salas**, cada una con una capacidad de **50 asientos**, por lo que la capacidad total es de **200 asientos**. En el escenario asignado se han vendido **175 boletos**.
+
+El programa debe utilizar los datos almacenados en memoria para calcular la capacidad total del cine, determinar cuántos asientos permanecen disponibles y mostrar el resultado correspondiente.
+
 ### Resultado
-El programa debe calcular la capacidad total del cine, determinar la cantidad de asientos disponibles y tomar una decisión según el nivel de ocupación.
-- Si la cantidad de boletos vendidos es igual a la capacidad total, debe mostrar:
+
+El programa debe calcular:
+
+- Capacidad total del cine: **200 asientos**.
+- Boletos vendidos: **175**.
+- Asientos disponibles: **25**.
+
+Si la cantidad de boletos vendidos es igual a la capacidad total, el programa debe mostrar:
+
+```text
 Cine lleno
-- Si todavía existen asientos disponibles, debe mostrar el mensaje junto con la cantidad restante. Para los datos utilizados en el proyecto, el resultado esperado es:
+```
+
+En caso contrario, debe mostrar:
+
+```text
 Asientos disponibles: 25
+```
+
+---
+
 ## Análisis
+
 ### Datos del programa
-Los datos principales se almacenan en memoria dentro del segmento `.data`. Además de las entradas iniciales, el programa reserva espacio para almacenar los resultados calculados y los mensajes que se muestran por pantalla.
+
+Los datos principales se almacenan en memoria y representan la información necesaria para calcular la disponibilidad del cine.
 
 | Dato | Valor inicial | Propósito |
-| salas | 4 | Almacena el número total de salas del cine. |
-| asientos | 50 | Almacena la cantidad de asientos por sala. |
-| vendidos | 175 | Almacena la cantidad de boletos vendidos. |
-| capacidad_total | 0 | Guarda la capacidad máxima calculada del cine: 4 × 50 = 200. |
-| disponibles | 0 | Guarda la cantidad de asientos libres: 200 - 175 = 25. |
-| es_diferente | 0 | Guarda 1 si la cantidad vendida es diferente de la capacidad total y 0 en caso contrario. |
-| msg_lleno | "Cine lleno\n" | Mensaje mostrado cuando el cine alcanza su capacidad máxima. |
-| msg_disp | "Asientos disponibles: " | Mensaje mostrado cuando todavía existen asientos libres. |
+|---|---:|---|
+| Número de salas | 4 | Indicar cuántas salas tiene el cine |
+| Asientos por sala | 50 | Indicar la capacidad de cada sala |
+| Boletos vendidos | 175 | Registrar la cantidad de boletos vendidos |
+| Capacidad total | 200 | Resultado de multiplicar salas × asientos por sala |
+| Asientos disponibles | 25 | Resultado de restar boletos vendidos a la capacidad total |
 
 ### Operaciones requeridas
 
 | Datos / Resultados | Propósito | Operación requerida | Instrucción MIPS |
-| salas | Cargar el número de salas desde memoria | Carga | lw |
-| asientos| Cargar los asientos por sala desde memoria | Carga | lw |
-| vendidos | Cargar la cantidad de boletos vendidos | Carga | lw |
-| capacidad_total | Calcular 4 × 50 = 200 | Multiplicación | mul |
-|disponibles | Calcular 200 - 175 = 25 | Resta | sub |
-| es_diferente | Comprobar si vendidos ≠ capacidad total |Comparación de desigualda| sne |
-| Resultados calculados | Guardar los valores obtenidos en memoria|Almacenamiento |sw|
-| Flujo del programa |Comparar vendidos con capacidad total y decidir qué salida ejecutar |Salto condicional|beq|
-| Mensajes y resultado|Mostrar texto y valores en pantalla|Entrada/salida|syscall|
-Las instrucciones principales utilizadas por el programa son:
-- lw: cargar un dato desde memoria.
-- sw: almacenar un resultado en memoria.
-- mul: realizar la multiplicación para obtener la capacidad total.
-- sub: calcular los asientos disponibles.
-- sne: determinar si la cantidad vendida es diferente de la capacidad total.
-- beq: dirigir el flujo hacia el caso de cine lleno cuando los valores son iguales.
-- li, la y move: preparar valores y direcciones para las llamadas al sistema.
-- j: saltar al final del programa después de mostrar el resultado correspondiente.
-- syscall: imprimir mensajes, mostrar el número de asientos disponibles y finalizar la ejecución.
-## Implementación
-El programa se encuentra organizado en una versión base y una versión final, de acuerdo con la estructura solicitada para el repositorio.
-### Versión base
-La carpeta `version_base/` contiene el código base de referencia de la actividad, conservado para que pueda ejecutarse y compararse con la versión desarrollada por el grupo.
-**Archivo:**
-### Versión final
-**Archivo:**
-version_final/programa_final.s
-La versión final realiza las siguientes etapas:
-1. Carga desde memoria los valores de salas, asientos y vendidos.
-2. Calcula la capacidad total del cine mediante mul.
-3. Calcula los asientos disponibles mediante sub.
-4. Compara la cantidad vendida con la capacidad máxima mediante sne y beq.
-5. Guarda capacidad_total, disponibles y es_diferente en memoria mediante sw.
-6. Si el cine está lleno, muestra el mensaje Cine lleno.
-7. En caso contrario, muestra Asientos disponibles: seguido del número de asientos libres.
-8. Finaliza la ejecución mediante la llamada al sistema correspondiente.
-El código contiene comentarios que permiten identificar los bloques principales y seguir el flujo del programa.
-## Evidencias de ejecución
-Las siguientes imágenes deben almacenarse dentro de la carpeta `evidencias/` utilizando exactamente los nombres indicados para que se muestren correctamente en GitHub.
-### Código
-![Código MIPS](evidencias/codigo.png)
-**Descripción:**  
-La captura muestra el código ensamblador ejecutado en MipsyWeb. Se observan el segmento de datos, la carga de valores desde memoria, el procesamiento mediante registros, el almacenamiento de resultados, la estructura condicional y las llamadas al sistema utilizadas para mostrar la salida.
-### Registros
-![Registros](evidencias/registros.png)
-**Descripción:**  
-Durante la ejecución, los registros temporales principales contienen los valores usados y calculados por el programa:
-| Registro | Valor | Contenido |
-| $t0 | 4 | Número de salas. |
-| $t1 | 50 | Asientos por sala. |
-| $t2 | 175 | Boletos vendidos. |
-| $t3 | 200 | Capacidad total calculada. |
-| $t4 | 25 | Asientos disponibles. |
-| $t5 | 1 | Resultado de la comparación vendidos!= capacidad_total |
-Estos valores permiten comprobar que las operaciones aritméticas y de comparación se realizaron correctamente.
-### Resultado
-![Resultado del programa](evidencias/resultado.png)
-**Descripción:**  
-Con los datos utilizados en el proyecto, la capacidad total es de 200 asientos y se han vendido 175 boletos. Por tanto, el programa determina que quedan 25 asientos disponibles y muestra:
-Asientos disponibles: 25
-## Conclusiones
-El desarrollo de este proyecto permitió comprender de manera práctica el flujo de procesamiento de datos en una arquitectura de bajo nivel. Se pudo observar que, antes de realizar operaciones matemáticas o comparaciones, los datos almacenados en memoria deben cargarse en registros para poder ser procesados por el programa.
-La implementación también permitió relacionar operaciones de alto nivel, como calcular una capacidad, obtener una diferencia o evaluar una condición, con instrucciones concretas de lenguaje ensamblador MIPS. El uso de MipsyWeb facilitó la comprobación del programa al permitir observar tanto los registros como el resultado final de la ejecución.
-Además, la actividad permitió reforzar el trabajo colaborativo y la validación sistemática de resultados. Comparar los valores esperados con los obtenidos en los registros ayudó a confirmar que la lógica implementada era correcta antes de dar por finalizada la solución.
-En conjunto, la práctica permitió comprender mejor la relación entre memoria, registros, operaciones aritméticas, comparaciones, saltos condicionales y llamadas al sistema dentro de un programa en ensamblador.
-## Documentación
-El reporte completo del proyecto se encuentra en formato PDF dentro de:
-documentacion/reporte_proyecto.pdf
-El documento contiene la descripción del escenario, el análisis de los datos, la implementación, las evidencias, las conclusiones y la bibliografía utilizada durante el desarrollo.
-## Bibliografía
-1. Citas APA – Normas APA. (s.f.). *Normas APA*. Recuperado el 24 de septiembre de 2026, de https://normas-apa.org/citas/
-2. CiteMaker. (s.f.). *CiteMaker CiteWeb | APA 7th Edn.* [Extensión de Chrome]. Chrome Web Store. Recuperado el 24 de septiembre de 2026, de https://chromewebstore.google.com/detail/citemaker-citeweb-apa-7th/naankklphfojljboaokgfbheobbgenka
-3. Mipsy Web: MIPS Assembly Emulator and Debugger. (s.f.). Recuperado el 29 de septiembre de 2026, de https://mipsy.qml.io/
-4. Patterson, D. A., & Hennessy, J. L. (2018). *Estructura y diseño de computadores: La interfaz hardware/software* (5.ª ed.). Editorial Reverté.
-5. Sweetman, D. (2007). *See MIPS run* (2.ª ed.). Morgan Kaufmann Publishers.
+|---|---|---|---|
+| Número de salas | Cargar dato desde memoria | Carga | `lw` |
+| Asientos por sala | Cargar dato desde memoria | Carga | `lw` |
+| Boletos vendidos | Cargar dato desde memoria | Carga | `lw` |
+| Capacidad total | Calcular la capacidad del cine | Multiplicación | `mul` |
+| Asientos disponibles | Calcular los asientos restantes | Resta | `sub` |
+| Comparación de capacidad | Determinar si el cine está lleno | Comparación | `sne` |
+| Control de flujo | Seleccionar el mensaje que debe mostrarse | Salto condicional | `beq` |
+| Resultados | Guardar valores calculados en memoria | Almacenamiento | `sw` |
+| Mensajes | Cargar direcciones y valores para impresión | Preparación de salida | `la`, `li`, `move` |
+| Flujo del programa | Evitar ejecutar bloques no correspondientes | Salto | `j` |
+| Salida | Mostrar los resultados por pantalla | Impresión | `syscall` |
 
-6. Tanenbaum, A. S., & Bos, H. (2015). *Sistemas operativos modernos* (4.ª ed.). Pearson Education.
+Instrucciones utilizadas en el programa:
+
+- `lw`: cargar un dato desde memoria.
+- `sw`: almacenar un resultado en memoria.
+- `mul`: realizar una multiplicación.
+- `sub`: realizar una resta.
+- `sne`: determinar si dos valores son diferentes.
+- `beq`: realizar un salto si dos valores son iguales.
+- `li`: cargar un valor inmediato en un registro.
+- `la`: cargar la dirección de una etiqueta.
+- `move`: copiar el contenido de un registro a otro.
+- `j`: realizar un salto incondicional.
+- `syscall`: mostrar información por pantalla o finalizar el programa.
+
+---
+
+## Implementación
+
+El código se organiza en una versión base y una versión final. La versión final contiene la solución completa del escenario y debe ejecutarse correctamente en MipsyWeb.
+
+### Versión base
+
+La carpeta `version_base/` debe contener el programa utilizado como punto de partida de la actividad.
+
+**Archivo:**
+
+```text
+version_base/programa_base.s
+```
+
+> **PENDIENTE – ARCHIVO:** subir aquí el programa base proporcionado o utilizado al inicio del proyecto con el nombre `programa_base.s`.
+
+**Descripción del estado inicial:**  
+> **PENDIENTE:** completar esta breve descripción cuando se confirme qué contenía exactamente la versión base entregada por el docente.
+
+### Versión final
+
+La carpeta `version_final/` contiene el programa desarrollado por el grupo.
+
+**Archivo:**
+
+```text
+version_final/programa_final.s
+```
+
+La versión final incluye:
+
+- Carga de los datos almacenados en memoria mediante `lw`.
+- Cálculo de la capacidad total mediante `mul`.
+- Cálculo de los asientos disponibles mediante `sub`.
+- Comparación de los boletos vendidos con la capacidad total.
+- Uso de `sne` y `beq` para controlar el flujo del programa.
+- Almacenamiento de los resultados mediante `sw`.
+- Presentación del resultado por pantalla mediante `syscall`.
+- Mensajes diferentes para los casos de cine lleno y asientos disponibles.
+- Comentarios explicativos dentro del código.
+
+> **ARCHIVO A SUBIR:** `version_final/programa_final.s`
+
+---
+
+## Evidencias de ejecución
+
+Las siguientes capturas deben demostrar el código, el uso de registros y el resultado final en MipsyWeb.
+
+### Código
+
+> **PENDIENTE – IMAGEN:** subir una captura del código con el nombre:
+>
+> ```text
+> evidencias/codigo.png
+> ```
+
+![Código MIPS](evidencias/codigo.png)
+
+**Descripción:**  
+### Registros
+
+> **PENDIENTE – IMAGEN:** subir una captura de los registros con el nombre:
+>
+> ```text
+> evidencias/registros.png
+> ```
+
+![Registros](evidencias/registros.png)
+
+**Descripción:**  
+La captura debe mostrar los registros relevantes durante o después de la ejecución. Se debe poder identificar el cálculo de la capacidad total (**200**) y de los asientos disponibles (**25**), según los registros utilizados por el programa.
+
+### Resultado
+
+> **PENDIENTE – IMAGEN:** subir una captura de la salida del programa con el nombre:
+>
+> ```text
+> evidencias/resultado.png
+> ```
+
+![Resultado del programa](evidencias/resultado.png)
+
+**Descripción:**  
+Para el escenario asignado, la ejecución debe mostrar que quedan **25 asientos disponibles**. Si se modifica la cantidad de boletos vendidos hasta igualar la capacidad total, el programa debe mostrar el mensaje **"Cine lleno"**.
+
+---
+
+## Conclusiones
+
+El desarrollo del proyecto permitió aplicar de forma práctica conceptos de organización y arquitectura de computadores mediante programación en lenguaje ensamblador MIPS. La implementación ayudó a comprender cómo los datos almacenados en memoria son cargados a registros y posteriormente procesados mediante instrucciones aritméticas, de comparación y de control de flujo.
+
+Una parte importante del trabajo consistió en traducir un problema sencillo de la vida real a operaciones básicas que puedan ser ejecutadas por el procesador. Calcular la capacidad total, determinar los asientos disponibles y seleccionar el mensaje correcto permitió observar cómo una secuencia de instrucciones MIPS construye el comportamiento completo de un programa.
+
+También se reforzó el uso de MipsyWeb para comprobar el contenido de los registros y verificar que cada operación produjera el resultado esperado. La revisión paso a paso facilitó la identificación de errores y permitió relacionar de manera más clara las instrucciones escritas con los cambios producidos durante la ejecución.
+
+Si se desarrollara nuevamente la actividad, sería conveniente planificar desde el inicio la distribución de los registros, documentar cada bloque conforme se construye y realizar pruebas con distintos valores, por ejemplo un cine con asientos disponibles y otro con su capacidad completamente ocupada.
+
+---
+
+## Documentación
+
+El reporte completo del proyecto debe almacenarse en:
+
+```text
+documentacion/reporte_proyecto.pdf
+```
+
+> **PENDIENTE – ARCHIVO:** subir el reporte final en PDF con el nombre `reporte_proyecto.pdf` dentro de la carpeta `documentacion/`.
+
+## Bibliografía
+
+Las fuentes utilizadas para comprender las instrucciones MIPS, el funcionamiento del simulador y otros conceptos empleados en el proyecto deben registrarse utilizando **normas APA, séptima edición**.
+
+### Ejemplos
+
+#### Página web
+
+```text
+University of New South Wales. (n.d.). MIPS instruction set.
+https://cgi.cse.unsw.edu.au/~cs1521/current/resources/mips-guide.html
+```
+
+#### Libro
+
+```text
+Patterson, D. A., & Hennessy, J. L. (2021). Computer organization
+and design: The hardware/software interface (6th ed.). Morgan Kaufmann.
+```
+
+#### Documentación de software
+
+```text
+MARS. (s.f.). MIPS Assembler and Runtime Simulator.
+http://courses.missouristate.edu/kenvollmar/mars/
+```
+
+### Referencias utilizadas
+
+1. University of New South Wales. (s.f.). *MIPS instruction set*. https://cgi.cse.unsw.edu.au/~cs1521/current/resources/mips-guide.html
+
+2. Patterson, D. A., & Hennessy, J. L. (2021). *Computer organization and design: The hardware/software interface* (6th ed.). Morgan Kaufmann.
+
+3. MARS. (n.d.). *MIPS Assembler and Runtime Simulator*. http://courses.missouristate.edu/kenvollmar/mars/
